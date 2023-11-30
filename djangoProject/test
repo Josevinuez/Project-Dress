@@ -1,0 +1,23 @@
+<!-- dressapp/templates/dressapp/upload.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Image</title>
+</head>
+<body>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="image" required>
+        <button type="submit">Upload</button>
+    </form>
+
+    {% if uploaded_file_url %}
+        <h2>Uploaded Image:</h2>
+        <img src="{{ uploaded_file_url }}" alt="Uploaded Image" style="max-width: 200px;">
+        <h2>Recommendations:</h2>
+        {% for recommendation in recommendations %}
+            <img src="{{ recommendation }}" alt="Recommended Image" style="max-width: 200px;">
+        {% endfor %}
+    {% endif %}
+</body>
+</html>

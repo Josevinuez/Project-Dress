@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prom Dress AI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        label.upload-label {
+            cursor: pointer;
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        button[type="submit"] {
+            background-color: #27ae60;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        img {
+            max-width: 100%;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Prom Dress AI</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="image" class="upload-label">Choose an Image</label>
+            <input type="file" name="image" id="image" accept="image/*" required>
+            <button type="submit">Upload</button>
+        </form>
+
+        {% if uploaded_file_url %}
+            <h2>Uploaded Image:</h2>
+            <img src="{{ uploaded_file_url }}" alt="Uploaded Image">
+            <h2>Recommendations:</h2>
+            {% for recommendation in recommendations %}
+                <img src="{{ recommendation }}" alt="Recommended Image">
+            {% endfor %}
+        {% endif %}
+    </div>
+</body>
+</html>
