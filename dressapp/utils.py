@@ -119,4 +119,4 @@ def recommendd(features, features_list):
 excel_file_path = '/Users/josevinueza/Documents/linkstopictures.xlsx'
 
 # Uncomment the line below to process the Excel file and extract features
-# process_excel_and_extract_features(excel_file_path, model, image_directory)
+#process_excel_and_extract_features(excel_file_path, model, image_directory)
